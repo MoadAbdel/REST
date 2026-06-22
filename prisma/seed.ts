@@ -17,21 +17,13 @@ async function main() {
   // Seed woods
   await prisma.wood.createMany({
     data: [
-      {
-        name: 'Oak',
-        type: 'noble_and_hardwoods',
-        hardness: 'hard',
-      },
-      {
-        name: 'Pine',
-        type: 'softwood',
-        hardness: 'tender',
-      },
-      {
-        name: 'Ebony',
-        type: 'exotic_wood',
-        hardness: 'hard',
-      },
+      { name: 'Épicéa', type: 'softwood', hardness: 'tender' },
+      { name: 'Pin', type: 'softwood', hardness: 'medium_hard' },
+      { name: 'Padouk', type: 'exotic_wood', hardness: 'hard' },
+      { name: 'Érable', type: 'noble_and_hardwoods', hardness: 'medium_hard' },
+      { name: 'Hêtre', type: 'noble_and_hardwoods', hardness: 'medium_hard' },
+      { name: 'Itauba', type: 'exotic_wood', hardness: 'hard' },
+      { name: 'Douglas', type: 'softwood', hardness: 'tender' },
     ],
     skipDuplicates: true,
   });
