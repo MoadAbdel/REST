@@ -3,9 +3,9 @@ import { prisma } from '../../app.js';
 export const signup = async (req, res) => {
   try {
     const user = await prisma.user.create({ data: req.body });
-    res.json(user);
+    res.status(201).json(user);
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    res.status(500).json({ error: error.message ?? 'An error occurred' });
   }
 };
 
