@@ -18,4 +18,7 @@ prisma.$connect()
   .then(() => console.log('Database connected...'))
   .catch((err) => console.log(err));
 
+import router from './app/routes/index.js';
+app.use('/api', router);
+
 export default app;
