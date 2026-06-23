@@ -1,3 +1,4 @@
+import bcrypt from 'bcrypt';
 import { prisma } from '../app.js';
 
 async function main() {
@@ -8,7 +9,7 @@ async function main() {
         firstName: 'John',
         lastName: 'Doe',
         email: 'john.doe@example.com',
-        password: 'hashed_password_here',
+        password: await bcrypt.hash('password123', 10),
       },
     ],
     skipDuplicates: true,
