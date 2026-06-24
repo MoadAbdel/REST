@@ -21,6 +21,7 @@ prisma
   .catch((err) => console.log(err));
 
 app.use(express.json());
+app.use('/uploads', express.static('uploads'));
 app.use('/api', router);
 
 export default app;
