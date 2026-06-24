@@ -2,7 +2,9 @@ import { prisma } from '../../app.js';
 
 export const create = async (req, res) => {
   try {
-    const pathname = `${req.protocol}://${req.get('host')}/uploads/${req.file.filename}`;
+    const pathname = req.file
+      ? `${req.protocol}://${req.get('host')}/uploads/${req.file.filename}`
+      : null;
     const wood = await prisma.wood.create({
       data: {
         ...JSON.parse(req.body.datas),
