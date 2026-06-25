@@ -121,6 +121,18 @@
       "get": {
         "summary": "Récupérer toutes les essences de bois",
         "tags": ["Woods"],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Jeton d'authentification JWT au format : Bearer <token>",
+            "schema": {
+              "type": "string",
+              "example": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+            }
+          }
+        ],
         "security": [{ "BearerAuth": [] }],
         "responses": {
           "200": {
