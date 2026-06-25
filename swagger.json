@@ -159,6 +159,18 @@
       "post": {
         "summary": "Créer une nouvelle essence de bois",
         "tags": ["Woods"],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Jeton d'authentification JWT au format : Bearer <token>",
+            "schema": {
+              "type": "string",
+              "example": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+            }
+          }
+        ],
         "security": [{ "BearerAuth": [] }],
         "requestBody": {
           "required": true,
@@ -228,6 +240,16 @@
         "tags": ["Woods"],
         "security": [{ "BearerAuth": [] }],
         "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Jeton d'authentification JWT au format : Bearer <token>",
+            "schema": {
+              "type": "string",
+              "example": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+            }
+          },
           {
             "name": "hardness",
             "in": "path",
