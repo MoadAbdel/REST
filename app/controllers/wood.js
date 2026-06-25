@@ -3,8 +3,16 @@ import { prisma } from '../../app.js';
 const addLinks = (wood, req) => ({
   ...wood,
   links: [
-    { rel: 'self', method: 'GET', href: `${req.protocol}://${req.get('host')}/api/woods/${wood.id}` },
-    { rel: 'sameHardness', method: 'GET', href: `${req.protocol}://${req.get('host')}/api/woods/${wood.hardness}` },
+    {
+      rel: 'self',
+      method: 'GET',
+      href: `${req.protocol}://${req.get('host')}/api/woods/${wood.id}`,
+    },
+    {
+      rel: 'sameHardness',
+      method: 'GET',
+      href: `${req.protocol}://${req.get('host')}/api/woods/${wood.hardness}`,
+    },
   ],
 });
 
@@ -19,7 +27,7 @@ export const create = async (req, res) => {
     });
     res.status(201).json(addLinks(wood, req));
   } catch (error) {
-    res.status(500).json({ error: error.message ?? 'Une erreur est survenue. Vérifiez que vous avez bien fourni une image et des données valides.' });
+    res.status(500).json({ error: error.message ?? 'An error occurred' });
   }
 };
 
@@ -28,7 +36,7 @@ export const readByHardness = async (req, res) => {
     const woods = await prisma.wood.findMany({
       where: { hardness: req.params.hardness },
     });
-    res.json(woods.map(wood => addLinks(wood, req)));
+    res.json(woods.map((wood) => addLinks(wood, req)));
   } catch (error) {
     res.status(500).json({ error: error.message ?? 'An error occurred' });
   }
@@ -37,7 +45,7 @@ export const readByHardness = async (req, res) => {
 export const readAll = async (req, res) => {
   try {
     const woods = await prisma.wood.findMany();
-    res.json(woods.map(wood => addLinks(wood, req)));
+    res.json(woods.map((wood) => addLinks(wood, req)));
   } catch (error) {
     res.status(500).json({ error: error.message ?? 'An error occurred' });
   }
